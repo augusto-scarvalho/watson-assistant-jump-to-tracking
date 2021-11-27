@@ -1,0 +1,343 @@
+{
+  "name": "Bot restaurante",
+  "intents": [
+    {
+      "intent": "pedir_recomendacao",
+      "examples": [
+        {
+          "text": "Você me recomenda algum prato?"
+        },
+        {
+          "text": "O que você recomenda?"
+        },
+        {
+          "text": "Quais pratos vocês recomendam?"
+        },
+        {
+          "text": "Qual comida você me sugere?"
+        },
+        {
+          "text": "O que tem de mais gostoso pra comer aí?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "reservar_mesa",
+      "examples": [
+        {
+          "text": "Quero uma mesa pra 10 pessoas no domingo."
+        },
+        {
+          "text": "Quero fazer uma reserva pra 3 pessoas."
+        },
+        {
+          "text": "Vou ir aí no meu aniversário e queria reservar uns lugares."
+        },
+        {
+          "text": "Como faz pra reservar uma mesa?"
+        },
+        {
+          "text": "Como reservo uma data?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "consultar_cardapio",
+      "examples": [
+        {
+          "text": "Quais pratos vocês vendem?"
+        },
+        {
+          "text": "Quero ver o cardápio."
+        },
+        {
+          "text": "Qual tipo de comida tem aqui?"
+        },
+        {
+          "text": "O que tem pra comer nesse restaurante?"
+        },
+        {
+          "text": "Quais comidas vocês vendem aqui?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "reclamar_atendimento",
+      "examples": [
+        {
+          "text": "Fui muito mal atendida pelo gerente."
+        },
+        {
+          "text": "Péssimo o atendimento de vocês."
+        },
+        {
+          "text": "O garçom foi grosseiro comigo."
+        },
+        {
+          "text": "Não gostei da comida."
+        },
+        {
+          "text": "Atendimento horrível."
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "fazer_pedido",
+      "examples": [
+        {
+          "text": "Quero um hambuger."
+        },
+        {
+          "text": "Gostaria de uma feijoada pra 3."
+        },
+        {
+          "text": "Pode trazer uma picanha no ponto."
+        },
+        {
+          "text": "Quero um pão na chapa."
+        },
+        {
+          "text": "Pode trazer 3 bebidas pra gente."
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "elogiar_atendimento",
+      "examples": [
+        {
+          "text": "Nossa, gostei bastante de comer aí."
+        },
+        {
+          "text": "Muito bom o atendimento."
+        },
+        {
+          "text": "Comida maravilhosa."
+        },
+        {
+          "text": "A unidade do shopping está de parabéns."
+        },
+        {
+          "text": "Parabéns pelo atendimento!"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "cancelar_pedido",
+      "examples": [
+        {
+          "text": "Cansei de esperar, pode cancelar o meu pedido."
+        },
+        {
+          "text": "Fiz um pedido e gostaria que ele fosse cancelado."
+        },
+        {
+          "text": "Não quero mais."
+        },
+        {
+          "text": "Cancela pra mim o prato que pedi."
+        },
+        {
+          "text": "Pode cancelar o meu pedido."
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "saudacao",
+      "examples": [
+        {
+          "text": "Olá."
+        },
+        {
+          "text": "Oi."
+        },
+        {
+          "text": "Olá, tudo bem?"
+        },
+        {
+          "text": "Como vai?"
+        },
+        {
+          "text": "Olá, vc tá aí?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "consultar_funcionamento",
+      "examples": [
+        {
+          "text": "Vocês abrem no feriado?"
+        },
+        {
+          "text": "A partir de que horas aqui abre?"
+        },
+        {
+          "text": "Aqui fica aberto até qual horário?"
+        },
+        {
+          "text": "Até que horas vocês funcionam?"
+        },
+        {
+          "text": "Vocês ficam abertos até que horário?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "despedida",
+      "examples": [
+        {
+          "text": "Adeus."
+        },
+        {
+          "text": "Até mais."
+        },
+        {
+          "text": "Até breve."
+        },
+        {
+          "text": "Até a próxima."
+        },
+        {
+          "text": "Tchau."
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "language": "pt-br",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "skill_id": "537071e7-e438-4e06-91b2-413a6c413b82",
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "fim",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_8_1564936827567",
+      "conditions": "true",
+      "dialog_node": "node_5_1564936923425",
+      "previous_sibling": "node_10_1564936862490"
+    },
+    {
+      "type": "standard",
+      "title": "imprimir confiança",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "<? $contador+1 ?>ª - <? intents[$contador].intent ?> - <? T(String).format('%.4f', (intents[$contador].confidence*100)) ?>%"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1564936827567",
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "$contador < 10",
+      "dialog_node": "node_10_1564936862490"
+    },
+    {
+      "type": "standard",
+      "title": "aumentar contador",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_10_1564936862490",
+      "context": {
+        "contador": "<? $contador +1 ?>"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_10_1564936862490"
+      },
+      "conditions": "true",
+      "dialog_node": "node_2_1564936874917"
+    },
+    {
+      "type": "standard",
+      "title": "mostrar confiança das intenções",
+      "output": {
+        "generic": []
+      },
+      "context": {
+        "contador": 0
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "true",
+      "dialog_node": "node_8_1564936827567",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Confiança abaixo dos 20%."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_8_1564936827567"
+    },
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Digite sua pergunta:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    }
+  ],
+  "workspace_id": "537071e7-e438-4e06-91b2-413a6c413b82",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
